@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
+import Header from '@components/header/header';
 
 const Home: NextPage = () => {
-  return <h2 className="text-yellow-500">Hello From NextJS</h2>;
+  return <Header />;
 };
 
 export default Home;
