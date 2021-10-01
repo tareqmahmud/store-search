@@ -6,3 +6,13 @@
 .full-image div {
     height: 100%;
 }
+
+
+/* Custom Components */
+.h-28 {
+    height: 28rem;
+}
+
+.top-50-percent {
+    top: 50%;
+}
