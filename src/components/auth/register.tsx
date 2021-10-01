@@ -7,19 +7,17 @@ import Button from '@components/ui/button';
 
 const Register = () => {
   return (
-    <div className="font-mono bg-gray-200 min-h-screen">
+    <div className="font-roboto tracking-wide bg-gray-200 min-h-screen">
       <div className="container mx-auto">
         <div className="flex justify-center px-6 py-12">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
             {/* Image */}
-            <div className="w-full hidden lg:block lg:w-5/12">
-              <div>
-                <Image src={loginHeroImage} alt="Something" />
-              </div>
+            <div className="w-full hidden lg:block lg:w-5/12 full-image">
+              <Image src={loginHeroImage} alt="Something" />
             </div>
 
             {/* Form */}
-            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none mb-1.5">
+            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 className="pt-4 text-2xl text-center">Create an account</h3>
               <form className="px-8 pt-6 mb-4 bg-white rounded mt-4">
                 <div className="mb-6 md:flex md:justify-between">
