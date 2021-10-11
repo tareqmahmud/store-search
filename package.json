@@ -14,6 +14,9 @@
   "scripts": {
     "dev:frontend": "yarn workspace frontend dev",
     "build:frontend": "yarn workspace frontend build",
-    "start:frontend": "yarn workspace frontend start"
+    "start:frontend": "yarn workspace frontend start",
+    "dev:admin": "yarn workspace admin dev",
+    "build:admin": "yarn workspace admin build",
+    "start:admin": "yarn workspace admin dev"
   }
 }
