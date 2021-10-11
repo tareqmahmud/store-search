@@ -4,5 +4,15 @@
   "main": "index.js",
   "repository": "git@github.com:tareqmahmud/store-search.git",
   "author": "MD Tareq Mahmud <tareqmahmud@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "admin",
+    "api"
+  ],
+  "scripts": {
+    "dev:frontend": "yarn workspace frontend dev",
+    "build:frontend": "yarn workspace frontend build"
+  }
 }
