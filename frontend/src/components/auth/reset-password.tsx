@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '@components/ui/forms/Input';
-import Button from '@components/ui/button';
+import Button from '@components/ui/forms/button';
 import Label from '@components/ui/forms/label';
 
 const ResetPassword = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Store from '@components/ui/store';
-import Button from "@components/ui/button";
+import Store from '@components/stores/store';
+import Button from "@components/ui/forms/button";
 
 const Stores = () => {
   return (

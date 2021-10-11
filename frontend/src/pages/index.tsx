@@ -1,6 +1,13 @@
 import React from 'react';
-import Home from '@components/ui/home';
+import Layout from '@components/ui/layout';
+import Hero from '@components/hero/hero';
+import Stores from '@components/stores/stores';
 
-const HomePage = () => <Home />;
+const HomePage = () => (
+  <Layout>
+    <Hero />
+    <Stores />
+  </Layout>
+);
 
 export default HomePage;

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import loginHeroImage from '@assets/images/loginHero.jpg';
 import Input from '@components/ui/forms/Input';
 import Label from '@components/ui/forms/label';
-import Button from '@components/ui/button';
+import Button from '@components/ui/forms/button';
 
 const Login = () => {
   return (

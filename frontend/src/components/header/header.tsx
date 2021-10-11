@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from "@components/header/navigation";
 
 const Header: React.FC = () => {
   return (
@@ -11,14 +12,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Navigation */}
-          <div className="">
-            <nav className="space-x-4">
-              <a href="#" className="hover:text-purple-500">Home</a>
-              <a href="#" className="hover:text-purple-500">About</a>
-              <a href="#" className="hover:text-purple-500">Contact</a>
-              <a href="#" className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600">Login</a>
-            </nav>
-          </div>
+          <Navigation />
         </div>
       </div>
     </div>
