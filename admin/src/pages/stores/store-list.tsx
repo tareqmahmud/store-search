@@ -15,10 +15,10 @@ import {
   EditButton,
   DeleteButton,
 } from "@pankod/refine";
-import { IPost, ICategory } from "../../interfaces";
+import { IStore, ICategory } from "../../interfaces";
 
-export const PostList: React.FC = () => {
-  const { tableProps } = useTable<IPost>();
+const StoreList: React.FC = () => {
+  const { tableProps } = useTable<IStore>();
 
   // Get all the categories id from posts
   const categoryIds: any = tableProps?.dataSource?.map(
@@ -82,7 +82,7 @@ export const PostList: React.FC = () => {
           )}
         />
 
-        <Table.Column<IPost>
+        <Table.Column<IStore>
           title="Actions"
           dataIndex="actions"
           render={(_text, record): React.ReactNode => {
@@ -99,3 +99,5 @@ export const PostList: React.FC = () => {
     </List>
   );
 };
+
+export default StoreList;

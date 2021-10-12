@@ -1,19 +1,19 @@
 import React from "react";
-import { Edit, Form, Input, Select, useForm, useSelect } from "@pankod/refine";
-import { IPost } from "../../interfaces";
+import { Create, Form, Input, Select, useForm, useSelect } from "@pankod/refine";
+import { IStore } from "../../interfaces";
 
 type Props = {};
 
-const PostEdit: React.FC<Props> = () => {
-  const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
+const StoreCreate: React.FC<Props> = () => {
+  const { formProps, saveButtonProps, queryResult } = useForm<IStore>();
 
-  const { selectProps: categorySelectProps } = useSelect<IPost>({
+  const { selectProps: categorySelectProps } = useSelect<IStore>({
     resource: "categories",
     defaultValue: queryResult?.data?.data?.category?.id,
   });
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Create saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
         <Form.Item label="Title" name="title">
           <Input />
@@ -44,8 +44,8 @@ const PostEdit: React.FC<Props> = () => {
           <Select {...categorySelectProps} />
         </Form.Item>
       </Form>
-    </Edit>
+    </Create>
   );
 };
 
-export default PostEdit;
+export default StoreCreate;

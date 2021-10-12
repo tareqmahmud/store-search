@@ -1,12 +1,12 @@
 import React from "react";
 import { Show, useOne, useShow, Typography, Tag } from "@pankod/refine";
-import { ICategory, IPost } from "../../interfaces";
+import { ICategory, IStore } from "../../interfaces";
 
 const { Title, Text } = Typography;
 
 type Props = {};
 
-const PostShow: React.FC<Props> = () => {
+const StoreShow: React.FC<Props> = () => {
   const { queryResult } = useShow();
   const { data, isLoading } = queryResult;
   const record = data?.data;
@@ -35,4 +35,4 @@ const PostShow: React.FC<Props> = () => {
   );
 };
 
-export default PostShow;
+export default StoreShow;

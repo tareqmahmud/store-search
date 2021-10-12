@@ -1,4 +1,4 @@
-export interface IPost {
+export interface IStore {
   id: string;
   title: string;
   status: "published" | "draft" | "rejected";
