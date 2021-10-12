@@ -7,10 +7,15 @@ import PostEdit from "./pages/posts/post-edit";
 import PostCreate from "./pages/posts/post-create";
 import authProvider from "./providers/auth-provider";
 import dataProvider from "./providers/data-provider";
+import Login from "./pages/login";
 
 function App() {
   return (
-    <Refine dataProvider={dataProvider()} authProvider={authProvider}>
+    <Refine
+      dataProvider={dataProvider()}
+      authProvider={authProvider}
+      LoginPage={Login}
+    >
       <Resource
         name="posts"
         list={PostList}

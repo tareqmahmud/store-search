@@ -57,9 +57,12 @@ const authProvider: AuthProvider = {
     const auth = localStorage.getItem("auth");
 
     if (auth) {
-      const parsedUser = JSON.parse(auth);
+      const user = {
+        name: "Tareq Mahmud",
+        avatar: "https://i.pravatar.cc/150?u=refine",
+      }
 
-      return Promise.resolve(parsedUser.username);
+      return Promise.resolve(user);
     }
 
     return Promise.reject();

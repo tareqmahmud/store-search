@@ -1,5 +1,5 @@
 import React from "react";
-import { Create, Edit, Form, Input, Select, useForm, useSelect } from "@pankod/refine";
+import { Create, Form, Input, Select, useForm, useSelect } from "@pankod/refine";
 import { IPost } from "../../interfaces";
 
 type Props = {};
