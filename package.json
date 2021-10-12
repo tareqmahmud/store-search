@@ -17,6 +17,9 @@
     "start:frontend": "yarn workspace @store-search/frontend start",
     "dev:admin": "yarn workspace @store-search/admin dev",
     "build:admin": "yarn workspace @store-search/admin build",
-    "start:admin": "yarn workspace @store-search/admin dev"
+    "start:admin": "yarn workspace @store-search/admin dev",
+    "dev:api": "yarn workspace @store-search/api start:dev",
+    "build:api": "yarn workspace @store-search/api build",
+    "start:api": "yarn workspace @store-search/api start:prod"
   }
 }
