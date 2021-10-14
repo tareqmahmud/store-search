@@ -1,31 +1,34 @@
-import { AuthProvider } from "@pankod/refine";
-
-const mockUsers = [
-  {
-    username: "admin",
-    roles: ["admin"],
-  },
-
-  {
-    username: "editor",
-    roles: ["editor"],
-  },
-];
+import { AuthProvider, notification } from "@pankod/refine";
+import http from "../framework/rest/utils/api/http";
+import { API_ENDPOINTS } from "../framework/rest/utils/endpoint";
+import { AxiosResponse } from "axios";
+import Cookies from "js-cookie";
+import { getToken } from "../framework/rest/utils/get-token";
 
 const authProvider: AuthProvider = {
-  login: ({ username, password, remember }) => {
-    const user = mockUsers.find((item) => item.username === username);
+  login: async ({ username, password, remember }) => {
+    const data = await http
+      .post(`/auth/${API_ENDPOINTS.LOGIN}`, { username, password })
+      .then((res: AxiosResponse<any>) => res.data);
 
-    if (user) {
-      localStorage.setItem("auth", JSON.stringify(user));
-      return Promise.resolve();
+    if (data?.token) {
+      // Set token to cookie
+      Cookies.set("token", data?.token);
+
+      notification.success({
+        message: "Successfully logged in",
+      });
+      return Promise.resolve("Successfully logged in");
     }
 
     return Promise.reject();
   },
 
   logout: () => {
-    localStorage.removeItem("auth");
+    Cookies.remove("token");
+    notification.success({
+      message: "Successfully logged out",
+    });
     return Promise.resolve();
   },
 
@@ -38,25 +41,25 @@ const authProvider: AuthProvider = {
   },
 
   checkAuth: () => {
-    return localStorage.getItem("auth") ? Promise.resolve() : Promise.reject();
+    return getToken() ? Promise.resolve() : Promise.reject();
   },
 
   getPermissions: () => {
-    const auth = localStorage.getItem("auth");
-
-    if (auth) {
-      const parsedUser = JSON.parse(auth);
-
-      return Promise.resolve(parsedUser.roles);
-    }
-
-    return Promise.reject();
+    return Promise.resolve();
   },
 
-  getUserIdentity: () => {
-    const auth = localStorage.getItem("auth");
+  getUserIdentity: async () => {
+    const data = await http
+      .get(`/auth/${API_ENDPOINTS.PROFILE}`, {
+        headers: {
+          'Authorization': `Bearer ${getToken()}`
+        }
+      })
+      .then((res: AxiosResponse<any>) => res.data);
 
-    if (auth) {
+    console.log("Data", data);
+
+    if (data) {
       const user = {
         name: "Tareq Mahmud",
         avatar: "https://i.pravatar.cc/150?u=refine",

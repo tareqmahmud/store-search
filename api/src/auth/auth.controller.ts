@@ -31,12 +31,13 @@ export class AuthController {
   @Post('/login')
   @UseGuards(LocalAuthGuard)
   login(@Request() req) {
-    return this.authService.login(req.user);
+    return this.authService.login(req.body);
   }
 
   @Get('/profile')
   @UseGuards(JwtAuthGuard)
   getProfile(@Request() req) {
+    console.log("Red", req);
     return req.user;
   }
 
