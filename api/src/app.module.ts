@@ -9,7 +9,6 @@ import { User } from './users/entities/user.entity';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { APP_PIPE } from '@nestjs/core';
-import { ProductsModule } from './products/products.module';
 import { ShopsModule } from './shops/shops.module';
 import { Shop } from "./shops/entities/shop.entity";
 
@@ -69,7 +68,6 @@ import { Shop } from "./shops/entities/shop.entity";
     // In app custom feature module
     AuthModule,
     UsersModule,
-    ProductsModule,
     ShopsModule,
   ],
   controllers: [AppController],
