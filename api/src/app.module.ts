@@ -10,6 +10,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { APP_PIPE } from '@nestjs/core';
 import { ProductsModule } from './products/products.module';
+import { ShopsModule } from './shops/shops.module';
+import { Shop } from "./shops/entities/shop.entity";
 
 @Module({
   imports: [
@@ -24,9 +26,13 @@ import { ProductsModule } from './products/products.module';
       // imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (dbConfig: ConfigService) => ({
-        type: 'sqlite',
-        database: dbConfig.get<string>('DB_SQLITE_NAME'),
-        entities: [User],
+        type: 'postgres',
+        host: dbConfig.get<string>('DB_HOST'),
+        port: dbConfig.get<number>('DB_PORT'),
+        username: dbConfig.get<string>('DB_USER'),
+        password: dbConfig.get<string>('DB_PASSWORD'),
+        database: dbConfig.get<string>('DB_DATABASE'),
+        entities: [User, Shop],
         synchronize: dbConfig.get<boolean>('DB_SYNCHRONIZE'),
       }),
     }),
@@ -64,6 +70,7 @@ import { ProductsModule } from './products/products.module';
     AuthModule,
     UsersModule,
     ProductsModule,
+    ShopsModule,
   ],
   controllers: [AppController],
   providers: [
