@@ -21,18 +21,18 @@ export class ShopsService {
   }
 
   findAll() {
-    return `This action returns all shops`;
+    return this.shopsRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} shop`;
+    return this.shopsRepository.findOne(id);
   }
 
-  update(id: number, updateShopDto: UpdateShopDto) {
-    return `This action updates a #${id} shop`;
+  async update(id: number, updateShopDto: UpdateShopDto) {
+    return this.shopsRepository.update(id, updateShopDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} shop`;
+    return this.shopsRepository.delete(id);
   }
 }
