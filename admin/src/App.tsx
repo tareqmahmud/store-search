@@ -3,11 +3,10 @@ import "@pankod/refine/dist/styles.min.css";
 import authProvider from "./providers/auth-provider";
 import dataProvider from "./providers/data-provider";
 import Login from "./pages/login";
-import StoreList from "./pages/stores/store-list";
-import StoreShow from "./pages/stores/store-show";
-import StoreEdit from "./pages/stores/store-edit";
-import StoreCreate from "./pages/stores/store-create";
+import ShopList from "./pages/shops/shop-list";
 import CustomTitle from "./components/app/custom-title";
+import ShopShow from "./pages/shops/shop-show";
+import ShopCreate from "./pages/shops/shop-create";
 
 function App() {
   return (
@@ -18,11 +17,10 @@ function App() {
       Title={CustomTitle}
     >
       <Resource
-        name="posts"
-        list={StoreList}
-        show={StoreShow}
-        edit={StoreEdit}
-        create={StoreCreate}
+        name="shops"
+        list={ShopList}
+        show={ShopShow}
+        create={ShopCreate}
       />
     </Refine>
   );

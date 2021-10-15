@@ -1,8 +1,8 @@
-import simpleRestDataProvider from "@pankod/refine-simple-rest";
+import nestJsCrudDataProvider from "@pankod/refine-nestjsx-crud";
 
 const dataProvider = () => {
-  const API_URL = "https://api.fake-rest.refine.dev";
-  return simpleRestDataProvider(API_URL);
+  const API_URL = "http://localhost:3000";
+  return nestJsCrudDataProvider(API_URL);
 };
 
 export default dataProvider;

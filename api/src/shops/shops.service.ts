@@ -20,8 +20,12 @@ export class ShopsService {
     return shop;
   }
 
-  findAll() {
-    return this.shopsRepository.find();
+  async findAll() {
+    const shops = await this.shopsRepository.find();
+
+    return {
+      data: shops
+    }
   }
 
   findOne(id: number) {

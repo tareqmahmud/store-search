@@ -1,9 +1,19 @@
 export interface IStore {
   id: string;
-  title: string;
-  status: "published" | "draft" | "rejected";
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  tags: [];
   createdAt: string;
-  category: { id: string };
+  updatedAt: string;
+  // status: "published" | "draft" | "rejected";
+  // category: { id: string };
+}
+
+export interface ITag {
+  id: string;
+  name: string;
 }
 
 export interface ICategory {

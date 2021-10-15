@@ -10,7 +10,9 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { APP_PIPE } from '@nestjs/core';
 import { ShopsModule } from './shops/shops.module';
-import { Shop } from "./shops/entities/shop.entity";
+import { Shop } from './shops/entities/shop.entity';
+import { TagsModule } from './tags/tags.module';
+import { Tag } from './tags/entities/tag.entity';
 
 @Module({
   imports: [
@@ -31,7 +33,7 @@ import { Shop } from "./shops/entities/shop.entity";
         username: dbConfig.get<string>('DB_USER'),
         password: dbConfig.get<string>('DB_PASSWORD'),
         database: dbConfig.get<string>('DB_DATABASE'),
-        entities: [User, Shop],
+        entities: [User, Shop, Tag],
         synchronize: dbConfig.get<boolean>('DB_SYNCHRONIZE'),
       }),
     }),
@@ -69,6 +71,7 @@ import { Shop } from "./shops/entities/shop.entity";
     AuthModule,
     UsersModule,
     ShopsModule,
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [
