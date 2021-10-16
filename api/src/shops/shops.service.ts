@@ -14,7 +14,7 @@ export class ShopsService {
   async create(createShopDto: CreateShopDto) {
     // Fetch all the tags
     const tags = await this.tagsRepository.findWithFilters({
-      titles: createShopDto.tags,
+      tags: createShopDto.tags,
     });
 
     // Create new shop
@@ -51,7 +51,7 @@ export class ShopsService {
   async update(id: number, updateShopDto: UpdateShopDto) {
     // Fetch all the tags
     const tags = await this.tagsRepository.findWithFilters({
-      titles: updateShopDto.tags,
+      tags: updateShopDto.tags,
     });
 
     // Find out the shop
