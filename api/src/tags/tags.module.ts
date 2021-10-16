@@ -8,7 +8,7 @@ import { ShopsRepository } from '../shops/shops.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([TagsRepository, ShopsRepository])],
   controllers: [TagsController],
-  providers: [TagsService, TagsRepository],
-  exports: [TagsRepository],
+  providers: [TagsService],
+  exports: [TypeOrmModule],
 })
 export class TagsModule {}

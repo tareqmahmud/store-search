@@ -10,14 +10,14 @@ export class TagsRepository extends Repository<Tag> {
    * @param filterTagsDto
    */
   async findWithFilters(filterTagsDto: FilterTagsDto) {
-    const filters = {
+    const filterOptions = {
       titles: filterTagsDto?.titles,
     };
 
-    return this.find({
-      ...(filters.titles && {
+    return await this.find({
+      ...(filterTagsDto.titles && {
         title: Raw((alias) => `${alias} IN (:...titles)`, {
-          titles: [...filterTagsDto.titles],
+          titles: filterTagsDto.titles,
         }),
       }),
     });
