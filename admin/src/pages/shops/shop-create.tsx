@@ -13,6 +13,7 @@ type Props = {};
 
 const ShopCreate: React.FC<Props> = () => {
   const { formProps, saveButtonProps } = useForm<IStore>();
+
   const { selectProps } = useSelect<ITag>({
     resource: "tags",
   });

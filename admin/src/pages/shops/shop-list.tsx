@@ -5,14 +5,8 @@ import {
   Table,
   TagField,
   useTable,
-  useMany,
-  TextField,
-  FilterDropdown,
-  Select,
-  useSelect,
   ShowButton,
   Space,
-  EditButton,
   DeleteButton,
 } from "@pankod/refine";
 import { IStore, ITag } from "../../interfaces";
@@ -50,7 +44,6 @@ const ShopList: React.FC = () => {
             return (
               <Space>
                 <ShowButton size="small" recordItemId={record?.id} hideText />
-                <EditButton size="small" recordItemId={record?.id} hideText />
                 <DeleteButton size="small" recordItemId={record?.id} hideText />
               </Space>
             );
