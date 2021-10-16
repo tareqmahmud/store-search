@@ -47,7 +47,27 @@ export class ShopsService {
   }
 
   async update(id: number, updateShopDto: UpdateShopDto) {
-    // return this.shopsRepository.update(id, updateShopDto);
+    // Fetch all the tags
+    const tags = await this.tagsRepository.findWithFilters({
+      titles: updateShopDto.tags,
+    });
+
+    // Find out the shop
+    const shop = await this.shopsRepository.findOne(id);
+
+    // Update the shop
+    shop.name = updateShopDto.name;
+    shop.email = updateShopDto.email;
+    shop.phone = updateShopDto.phone;
+    shop.address = updateShopDto.address;
+    shop.tags = tags;
+
+    // Save the shop
+    await this.shopsRepository.save(shop);
+
+    return {
+      data: shop,
+    };
   }
 
   remove(id: number) {
