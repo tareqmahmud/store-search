@@ -1,19 +1,19 @@
+export interface ITag {
+  id: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface IStore {
   id: string;
   name: string;
   email: string;
   phone: string;
   address: string;
-  tags: [];
+  tags: ITag[];
   createdAt: string;
   updatedAt: string;
-  // status: "published" | "draft" | "rejected";
-  // category: { id: string };
-}
-
-export interface ITag {
-  id: string;
-  name: string;
 }
 
 export interface ICategory {

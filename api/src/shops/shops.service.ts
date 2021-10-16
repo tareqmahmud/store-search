@@ -35,7 +35,9 @@ export class ShopsService {
   }
 
   async findAll() {
-    const shops = await this.shopsRepository.find();
+    const shops = await this.shopsRepository.find({
+      relations: ["tags"]
+    });
 
     return {
       data: shops,

@@ -15,29 +15,10 @@ import {
   EditButton,
   DeleteButton,
 } from "@pankod/refine";
-import { IStore, ICategory } from "../../interfaces";
+import { IStore, ITag } from "../../interfaces";
 
 const ShopList: React.FC = () => {
   const { tableProps } = useTable<IStore>();
-
-  // Get all the categories id from posts
-  // const categoryIds: any = tableProps?.dataSource?.map(
-  //   (item) => item.category.id ?? []
-  // );
-
-  // Get category name by re query using post category id
-  // const { data: categoriesData, isLoading } = useMany<ICategory>({
-  //   resource: "categories",
-  //   ids: categoryIds,
-  //   queryOptions: {
-  //     enabled: categoryIds?.length > 0,
-  //   },
-  // });
-
-  // Category filter
-  // const { selectProps: categorySelectProps } = useSelect<ICategory>({
-  //   resource: "categories",
-  // });
 
   return (
     <List>
@@ -50,48 +31,17 @@ const ShopList: React.FC = () => {
           dataIndex="tags"
           title="Tags"
           render={(tags) => {
-            return tags.slice(0, 5).map((tag: any) => <TagField value={tag} />);
+            return tags
+              .slice(0, 5)
+              .map((tag: ITag) => <TagField value={tag.title} />);
           }}
         />
 
-        {/*<Table.Column*/}
-        {/*  dataIndex="status"*/}
-        {/*  title="Status"*/}
-        {/*  render={(value) => <TagField value={value} />}*/}
-        {/*/>*/}
         <Table.Column
           dataIndex="createdAt"
           title="createdAt"
           render={(value) => <DateField value={value} />}
         />
-
-        {/*<Table.Column*/}
-        {/*  dataIndex={["category", "id"]}*/}
-        {/*  title="Category"*/}
-        {/*  render={(value) => {*/}
-        {/*    if (isLoading) {*/}
-        {/*      return <TextField value="Loading...." />;*/}
-        {/*    }*/}
-
-        {/*    return (*/}
-        {/*      <TextField*/}
-        {/*        value={*/}
-        {/*          categoriesData?.data.find((item) => item.id === value)?.title*/}
-        {/*        }*/}
-        {/*      />*/}
-        {/*    );*/}
-        {/*  }}*/}
-        {/*  filterDropdown={(props) => (*/}
-        {/*    <FilterDropdown {...props}>*/}
-        {/*      <Select*/}
-        {/*        style={{ minWidth: 200 }}*/}
-        {/*        mode="multiple"*/}
-        {/*        placeholder="Select Category"*/}
-        {/*        {...categorySelectProps}*/}
-        {/*      />*/}
-        {/*    </FilterDropdown>*/}
-        {/*  )}*/}
-        {/*/>*/}
 
         <Table.Column<IStore>
           title="Actions"
