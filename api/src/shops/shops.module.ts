@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { ShopsService } from './shops.service';
 import { ShopsController } from './shops.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Shop } from './entities/shop.entity';
-import { Tag } from "../tags/entities/tag.entity";
+import { ShopsRepository } from './shops.repository';
+import { TagsRepository } from '../tags/tags.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Shop, Tag])],
+  imports: [TypeOrmModule.forFeature([ShopsRepository, TagsRepository])],
   controllers: [ShopsController],
-  providers: [ShopsService],
-  exports: [TypeOrmModule]
+  providers: [ShopsService, ShopsRepository],
+  exports: [ShopsRepository],
 })
 export class ShopsModule {}
