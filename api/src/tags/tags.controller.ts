@@ -10,6 +10,7 @@ import {
 import { TagsService } from './tags.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
+import { FilterTagsDto } from "./dto/filter-tags.dto";
 
 @Controller('tags')
 export class TagsController {
@@ -21,8 +22,8 @@ export class TagsController {
   }
 
   @Get()
-  findAll() {
-    return this.tagsService.findAll();
+  findAll(@Body() filterTagsDto: FilterTagsDto) {
+    return this.tagsService.findAll(filterTagsDto);
   }
 
   @Get(':id')

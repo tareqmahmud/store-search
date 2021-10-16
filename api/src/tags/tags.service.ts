@@ -5,13 +5,13 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from 'rxjs';
 import { Tag } from './entities/tag.entity';
+import { Raw } from 'typeorm';
+import { FilterTagsDto } from './dto/filter-tags.dto';
+import { TagsRepository } from './tags.repository';
 
 @Injectable()
 export class TagsService {
-  constructor(
-    @InjectRepository(Tag)
-    private tagsRepository: Repository<Tag>,
-  ) {}
+  constructor(private tagsRepository: TagsRepository) {}
 
   async create(createTagDto: CreateTagDto) {
     const tag = this.tagsRepository.create({
@@ -25,8 +25,8 @@ export class TagsService {
     };
   }
 
-  async findAll() {
-    const tags = await this.tagsRepository.find();
+  async findAll(filterTagsDto: FilterTagsDto) {
+    const tags = await this.tagsRepository.findWithFilters(filterTagsDto);
 
     return {
       data: tags,

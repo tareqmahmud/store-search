@@ -13,19 +13,20 @@ export class ShopsService {
   ) {}
 
   async create(createShopDto: CreateShopDto) {
-    const shop = this.shopsRepository.create(createShopDto);
+    // Find the tags first
+    // const shop = this.tagsRepository.find({ title: createShopDto.tags[0] });
+    //
+    // await this.shopsRepository.save(shop);
 
-    await this.shopsRepository.save(shop);
-
-    return shop;
+    return "Ok";
   }
 
   async findAll() {
     const shops = await this.shopsRepository.find();
 
     return {
-      data: shops
-    }
+      data: shops,
+    };
   }
 
   findOne(id: number) {
@@ -33,7 +34,7 @@ export class ShopsService {
   }
 
   async update(id: number, updateShopDto: UpdateShopDto) {
-    return this.shopsRepository.update(id, updateShopDto);
+    // return this.shopsRepository.update(id, updateShopDto);
   }
 
   remove(id: number) {
