@@ -36,7 +36,7 @@ export class ShopsService {
 
   async findAll() {
     const shops = await this.shopsRepository.find({
-      relations: ["tags"]
+      relations: ['tags'],
     });
 
     return {
@@ -45,7 +45,7 @@ export class ShopsService {
   }
 
   findOne(id: number) {
-    return this.shopsRepository.findOne(id);
+    return this.shopsRepository.findOne(id, { relations: ['tags'] });
   }
 
   async update(id: number, updateShopDto: UpdateShopDto) {

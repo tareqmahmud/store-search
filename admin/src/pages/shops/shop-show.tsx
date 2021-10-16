@@ -7,7 +7,7 @@ import {
   Tag,
   TagField,
 } from "@pankod/refine";
-import { ICategory, IStore } from "../../interfaces";
+import { ICategory, IStore, ITag } from "../../interfaces";
 
 const { Title, Text } = Typography;
 
@@ -17,14 +17,6 @@ const ShopShow: React.FC<Props> = () => {
   const { queryResult } = useShow();
   const { data, isLoading } = queryResult;
   const record = data?.data;
-
-  // const { data: categoryData } = useOne<ICategory>({
-  //   resource: "categories",
-  //   id: record?.category?.id || "",
-  //   queryOptions: {
-  //     enabled: !!record?.category?.id,
-  //   },
-  // });
 
   return (
     <Show isLoading={isLoading}>
@@ -41,8 +33,8 @@ const ShopShow: React.FC<Props> = () => {
       <Text>{record?.address}</Text>
 
       <Title level={5}>Tags</Title>
-      {record?.tags?.map((tag: any) => (
-        <TagField value={tag} />
+      {record?.tags?.map((tag: ITag) => (
+        <TagField value={tag.title} />
       ))}
     </Show>
   );
