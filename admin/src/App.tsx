@@ -7,6 +7,8 @@ import ShopList from "./pages/shops/shop-list";
 import CustomTitle from "./components/app/custom-title";
 import ShopShow from "./pages/shops/shop-show";
 import ShopCreate from "./pages/shops/shop-create";
+import TagList from "./pages/tags/tag-list";
+import TagCreate from "./pages/tags/tag-create";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         show={ShopShow}
         create={ShopCreate}
       />
+
+      <Resource name="tags" list={TagList} create={TagCreate} />
     </Refine>
   );
 }
