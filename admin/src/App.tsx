@@ -9,6 +9,8 @@ import ShopShow from "./pages/shops/shop-show";
 import ShopCreate from "./pages/shops/shop-create";
 import TagList from "./pages/tags/tag-list";
 import TagCreate from "./pages/tags/tag-create";
+import TagEdit from "./pages/tags/tag-edit";
+import TagShow from "./pages/tags/tag-show";
 
 function App() {
   return (
@@ -25,7 +27,13 @@ function App() {
         create={ShopCreate}
       />
 
-      <Resource name="tags" list={TagList} create={TagCreate} />
+      <Resource
+        name="tags"
+        list={TagList}
+        create={TagCreate}
+        edit={TagEdit}
+        show={TagShow}
+      />
     </Refine>
   );
 }

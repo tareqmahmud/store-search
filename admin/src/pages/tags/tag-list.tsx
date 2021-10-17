@@ -7,6 +7,7 @@ import {
   ShowButton,
   Space,
   DeleteButton,
+  EditButton,
 } from "@pankod/refine";
 import { IStore, ITag } from "../../interfaces";
 
@@ -16,6 +17,9 @@ const TagList: React.FC = () => {
   return (
     <List>
       <Table {...tableProps} rowKey="id">
+
+        <Table.Column dataIndex="id" title="ID" />
+
         <Table.Column dataIndex="title" title="Title" />
 
         <Table.Column
@@ -37,6 +41,7 @@ const TagList: React.FC = () => {
             return (
               <Space>
                 <ShowButton size="small" recordItemId={record?.id} hideText />
+                <EditButton size="small" recordItemId={record?.id} hideText />
                 <DeleteButton size="small" recordItemId={record?.id} hideText />
               </Space>
             );
