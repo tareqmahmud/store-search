@@ -77,29 +77,11 @@ const Login: React.FC<Props> = () => {
                       Remember me
                     </Checkbox>
                   </Form.Item>
-
-                  <a
-                    style={{
-                      float: "right",
-                      fontSize: "12px",
-                    }}
-                    href="#"
-                  >
-                    Forgot password?
-                  </a>
                 </div>
                 <Button type="primary" size="large" htmlType="submit" block>
                   Sign in
                 </Button>
               </Form>
-              <div style={{ marginTop: 8 }}>
-                <Text style={{ fontSize: 12 }}>
-                  Don’t have an account?{" "}
-                  <a href="/signup" style={{ fontWeight: "bold" }}>
-                    Sign up
-                  </a>
-                </Text>
-              </div>
             </Card>
           </div>
         </Col>
