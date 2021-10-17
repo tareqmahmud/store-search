@@ -13,6 +13,7 @@ import { ShopsModule } from './shops/shops.module';
 import { Shop } from './shops/entities/shop.entity';
 import { TagsModule } from './tags/tags.module';
 import { Tag } from './tags/entities/tag.entity';
+import { AlgoliaModule } from 'nestjs-algoliasearch';
 
 @Module({
   imports: [
@@ -35,6 +36,14 @@ import { Tag } from './tags/entities/tag.entity';
         database: dbConfig.get<string>('DB_DATABASE'),
         entities: [User, Shop, Tag],
         synchronize: dbConfig.get<boolean>('DB_SYNCHRONIZE'),
+      }),
+    }),
+
+    AlgoliaModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: async (algoliaConfig: ConfigService) => ({
+        applicationId: algoliaConfig.get<string>('ALGOLIA_APPLICATION_ID'),
+        apiKey: algoliaConfig.get<string>('ALGOLIA_ADMIN_API_KEY'),
       }),
     }),
 

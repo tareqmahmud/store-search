@@ -3,12 +3,17 @@ import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
 import { ShopsRepository } from './shops.repository';
 import { TagsRepository } from '../tags/tags.repository';
+import { InjectIndex } from 'nestjs-algoliasearch';
+import { Shop } from './entities/shop.entity';
+import { SearchIndex } from 'algoliasearch';
 
 @Injectable()
 export class ShopsService {
   constructor(
     private tagsRepository: TagsRepository,
     private shopsRepository: ShopsRepository,
+    @InjectIndex(Shop)
+    private readonly shopIndex: SearchIndex,
   ) {}
 
   async create(createShopDto: CreateShopDto) {
@@ -28,6 +33,16 @@ export class ShopsService {
 
     // Save the shop
     await this.shopsRepository.save(newShop);
+
+    // Save to algolia
+    this.shopIndex.saveObjects(
+      [
+        {
+          ...newShop,
+        },
+      ],
+      { autoGenerateObjectIDIfNotExist: true },
+    );
 
     return {
       data: newShop,

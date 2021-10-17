@@ -4,9 +4,19 @@ import { ShopsController } from './shops.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ShopsRepository } from './shops.repository';
 import { TagsRepository } from '../tags/tags.repository';
+import { AlgoliaModule } from 'nestjs-algoliasearch';
+import { Shop } from './entities/shop.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ShopsRepository, TagsRepository])],
+  imports: [
+    TypeOrmModule.forFeature([ShopsRepository, TagsRepository]),
+    AlgoliaModule.forFeature([
+      {
+        name: Shop,
+        options: {},
+      },
+    ]),
+  ],
   controllers: [ShopsController],
   providers: [ShopsService],
   exports: [TypeOrmModule],
