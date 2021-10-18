@@ -2,15 +2,17 @@ import http from '@framework/rest/utils/api/http';
 
 type NumberOrString = number | string;
 
-export type ParamsType = {};
+export type ParamsType = {
+  search?: string;
+};
 
 export class CoreApi {
   private request = http;
 
   constructor(public _basePath: string) {}
 
-  find(_params: ParamsType) {
-    const queryString = ``;
+  find(params: ParamsType) {
+    const queryString = `?search=${params?.search}`;
     return this.request.get(this._basePath + queryString);
   }
 

@@ -4,12 +4,14 @@ import { useQuery } from 'react-query';
 
 const ShopsService = new CoreApi(API_ENDPOINTS.SHOPS);
 
-export const fetchShops = async () => {
-  const { data } = await ShopsService.findAll();
+export const fetchShops = async ({ queryKey }: any) => {
+  const [_key, params] = queryKey;
+
+  const { data } = await ShopsService.find(params);
 
   return data;
 };
 
-export const useShopsQuery = () => {
-  return useQuery<any, Error>(API_ENDPOINTS.SHOPS, fetchShops);
+export const useShopsQuery = (options: any) => {
+  return useQuery<any, Error>([API_ENDPOINTS.SHOPS, options], fetchShops);
 };

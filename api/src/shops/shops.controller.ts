@@ -6,8 +6,8 @@ import {
   Patch,
   Param,
   Delete,
-  NotFoundException,
-} from '@nestjs/common';
+  NotFoundException, Query
+} from "@nestjs/common";
 import { ShopsService } from './shops.service';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
@@ -22,8 +22,8 @@ export class ShopsController {
   }
 
   @Get()
-  findAll() {
-    return this.shopsService.findAll();
+  findAll(@Query() query) {
+    return this.shopsService.findAll(query);
   }
 
   @Get(':id')

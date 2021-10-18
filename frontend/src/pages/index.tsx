@@ -1,12 +1,10 @@
 import React from 'react';
 import Layout from '@components/ui/layout';
-import Hero from '@components/hero/hero';
-import Shops from '@components/stores/shops';
+import ShopsBlock from '@components/stores/shops-block';
 
 const HomePage = () => (
   <Layout>
-    <Hero />
-    <Shops />
+    <ShopsBlock />
   </Layout>
 );
 
