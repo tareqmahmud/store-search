@@ -8,10 +8,10 @@ const Navigation: React.FC<Props> = () => {
   return (
     <div className="">
       <nav className="space-x-4">
-        <Link href="">
+        <Link href="/">
           <a className="hover:text-purple-500">Home</a>
         </Link>
-        <Link href="">
+        <Link href="/">
           <a className="hover:text-purple-500">About</a>
         </Link>
         <Link href={ROUTES.LOGIN}>

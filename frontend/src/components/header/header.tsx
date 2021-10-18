@@ -1,5 +1,6 @@
 import React from 'react';
-import Navigation from "@components/header/navigation";
+import Navigation from '@components/header/navigation';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
         <div className="px-12 py-3 flex justify-between items-center">
           {/* Logo */}
           <div className="">
-            <a href="#" className="font-bold text-2xl">TStore</a>
+            <Link href={{ pathname: '/' }}>TStore</Link>
           </div>
 
           {/* Navigation */}

@@ -1,10 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import storeImage from '@assets/images/store.jpg';
+import { TShop } from '@framework/rest/types';
 
-type Props = {};
+type Props = {
+  shop: TShop;
+};
 
-const Store: React.FC<Props> = () => {
+const Shop: React.FC<Props> = ({ shop }) => {
   return (
     <div className="bg-white pb-5 rounded shadow">
       <a href="#">
@@ -15,10 +18,10 @@ const Store: React.FC<Props> = () => {
           objectFit="cover"
           className="rounded-t"
         />
-        <h2 className="px-3 mt-3 text-lg">Chaldal</h2>
+        <h2 className="px-3 mt-3 text-lg">{shop.name}</h2>
       </a>
     </div>
   );
 };
 
-export default Store;
+export default Shop;

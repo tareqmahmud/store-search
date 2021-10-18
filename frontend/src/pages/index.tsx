@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '@components/ui/layout';
 import Hero from '@components/hero/hero';
-import Stores from '@components/stores/stores';
+import Shops from '@components/stores/shops';
 
 const HomePage = () => (
   <Layout>
     <Hero />
-    <Stores />
+    <Shops />
   </Layout>
 );
 
