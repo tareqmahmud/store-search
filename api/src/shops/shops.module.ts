@@ -13,7 +13,9 @@ import { Shop } from './entities/shop.entity';
     AlgoliaModule.forFeature([
       {
         name: Shop,
-        options: {},
+        options: {
+          searchableAttributes: ['tags'],
+        },
       },
     ]),
   ],

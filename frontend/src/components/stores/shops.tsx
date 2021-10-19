@@ -14,6 +14,7 @@ type Props = {
 const Shops: React.FC<Props> = ({ search }) => {
   const { data, isLoading: loading } = useShopsQuery({
     search: search,
+    enableAlgolia: true
   });
 
   if (loading) {
@@ -24,9 +25,11 @@ const Shops: React.FC<Props> = ({ search }) => {
     );
   }
 
+  const shops = data?.hits ? data?.hits : data?.data;
+
   return (
     <>
-      {!loading && isEmpty(data?.data) ? (
+      {!loading && isEmpty(shops) ? (
         <div className="flex justify-center items-center">
           <Image src={noData} width="400" height="400" />
         </div>
@@ -34,7 +37,7 @@ const Shops: React.FC<Props> = ({ search }) => {
         <div className="bg-gray-100">
           <div className="container mx-auto">
             <div className="w-full min-h-full py-12 px-12 grid gap-20 grid-cols-4">
-              {data?.data?.map((shop: TShop, index: number) => (
+              {shops?.map((shop: TShop, index: number) => (
                 <Shop key={`shop-${index}`} shop={shop} />
               ))}
             </div>

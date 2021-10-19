@@ -6,7 +6,6 @@ import { TagsRepository } from '../tags/tags.repository';
 import { InjectIndex } from 'nestjs-algoliasearch';
 import { Shop } from './entities/shop.entity';
 import { SearchIndex } from 'algoliasearch';
-import _ from 'lodash';
 
 @Injectable()
 export class ShopsService {
@@ -53,12 +52,18 @@ export class ShopsService {
   async findAll(query) {
     let shops = [];
 
-    if (query?.search === "" || query?.search === 'undefined'){
+    if (
+      query?.enableAlgolia !== 'true' &&
+      (query?.search === '' || query?.search === 'undefined' || !query?.search)
+    ) {
       shops = await this.shopsRepository.find({
         relations: ['tags'],
       });
-    }else {
-      shops =await this.shopsRepository.findWithSearch(query?.search)
+    } else if (query?.enableAlgolia === 'true') {
+      let search = query?.search === 'undefined' ? '' : query?.search;
+      return this.shopIndex.search(search);
+    } else {
+      shops = await this.shopsRepository.findWithSearch(query?.search);
     }
 
     return {
