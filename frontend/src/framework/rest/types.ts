@@ -13,5 +13,6 @@ export type TShop = {
   address: string;
   createdAt: string;
   updatedAt: string;
+  image?: string;
   tags: Tag[];
 };
