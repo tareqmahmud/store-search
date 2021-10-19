@@ -6,11 +6,16 @@ import { ShopsRepository } from './shops.repository';
 import { TagsRepository } from '../tags/tags.repository';
 import { AlgoliaModule } from 'nestjs-algoliasearch';
 import { Shop } from './entities/shop.entity';
-import { CloudinaryModule } from "../cloudinary/cloudinary.module";
+import { CloudinaryModule } from '../cloudinary/cloudinary.module';
+import { UsersRepository } from '../users/users.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ShopsRepository, TagsRepository]),
+    TypeOrmModule.forFeature([
+      ShopsRepository,
+      TagsRepository,
+      UsersRepository,
+    ]),
     AlgoliaModule.forFeature([
       {
         name: Shop,
@@ -19,7 +24,7 @@ import { CloudinaryModule } from "../cloudinary/cloudinary.module";
         },
       },
     ]),
-    CloudinaryModule
+    CloudinaryModule,
   ],
   controllers: [ShopsController],
   providers: [ShopsService],

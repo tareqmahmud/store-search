@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Shop } from '../../shops/entities/shop.entity';
 
 @Entity('users')
 export class User {
@@ -34,4 +35,7 @@ export class User {
 
   @Column({ nullable: true })
   passwordResetExpiry: number;
+
+  @OneToMany(() => Shop, (shop) => shop.user)
+  shops: Shop[];
 }

@@ -9,21 +9,24 @@ import {
   NotFoundException,
   Query,
   UploadedFile,
-  UseInterceptors, UnprocessableEntityException
-} from "@nestjs/common";
+  UseInterceptors,
+  UseGuards,
+  Req
+} from '@nestjs/common';
 import { ShopsService } from './shops.service';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UNHANDLED_RUNTIME_EXCEPTION } from "@nestjs/core/errors/messages";
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('shops')
 export class ShopsController {
   constructor(private readonly shopsService: ShopsService) {}
 
   @Post()
-  create(@Body() createShopDto: CreateShopDto) {
-    return this.shopsService.create(createShopDto);
+  @UseGuards(JwtAuthGuard)
+  create(@Body() createShopDto: CreateShopDto, @Req() req) {
+    return this.shopsService.create(createShopDto, req.user);
   }
 
   @Get()

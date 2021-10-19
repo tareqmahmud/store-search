@@ -3,11 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Tag } from '../../tags/entities/tag.entity';
 import { JoinTable } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 
 @Entity('shops')
 export class Shop {
@@ -28,6 +30,9 @@ export class Shop {
 
   @Column({ nullable: true })
   image: string;
+
+  @ManyToOne(() => User, (user) => user.shops)
+  user: User;
 
   @ManyToMany(() => Tag)
   @JoinTable({

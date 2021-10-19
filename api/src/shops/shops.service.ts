@@ -11,12 +11,14 @@ import { InjectIndex } from 'nestjs-algoliasearch';
 import { Shop } from './entities/shop.entity';
 import { SearchIndex } from 'algoliasearch';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
+import { UsersRepository } from '../users/users.repository';
 
 @Injectable()
 export class ShopsService {
   constructor(
     private tagsRepository: TagsRepository,
     private shopsRepository: ShopsRepository,
+    private usersRepository: UsersRepository,
     private cloudinaryService: CloudinaryService,
     @InjectIndex(Shop)
     private readonly shopIndex: SearchIndex,
@@ -28,10 +30,15 @@ export class ShopsService {
     });
   }
 
-  async create(createShopDto) {
+  async create(createShopDto, loginUser) {
     // Fetch all the tags
     const tags = await this.tagsRepository.findWithFilters({
       tags: createShopDto.tags,
+    });
+
+    // Get the current user
+    const user = await this.usersRepository.findOne({
+      username: loginUser.username,
     });
 
     // Create new shop
@@ -42,6 +49,7 @@ export class ShopsService {
       address: createShopDto.address,
       image: createShopDto?.image[0]?.response?.secure_url as string,
       tags,
+      user,
     });
 
     // Save the shop
@@ -56,6 +64,12 @@ export class ShopsService {
       ],
       { autoGenerateObjectIDIfNotExist: true },
     );
+
+    // Delete user object
+    delete newShop.user;
+
+    // Add userId
+    newShop["userId"] = user?.id;
 
     return {
       data: newShop,
