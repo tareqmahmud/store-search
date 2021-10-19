@@ -4,8 +4,9 @@ import {
   Form,
   Input,
   useForm,
+  Upload,
   Select,
-  useSelect,
+  useSelect, getValueFromEvent, useApiUrl
 } from "@pankod/refine";
 import { IStore, ITag } from "../../interfaces";
 
@@ -17,6 +18,8 @@ const ShopCreate: React.FC<Props> = () => {
   const { selectProps } = useSelect<ITag>({
     resource: "tags",
   });
+
+  const apiUrl = useApiUrl();
 
   return (
     <Create saveButtonProps={saveButtonProps}>
@@ -35,6 +38,25 @@ const ShopCreate: React.FC<Props> = () => {
 
         <Form.Item label="Address" name="address">
           <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item label="Image">
+          <Form.Item
+            name="image"
+            valuePropName="fileList"
+            getValueFromEvent={getValueFromEvent}
+            noStyle
+          >
+            <Upload.Dragger
+              name="file"
+              action={`${apiUrl}/shops/upload`}
+              listType="picture"
+            >
+              <p className="ant-upload-text">
+                Drag & drop a file in this area
+              </p>
+            </Upload.Dragger>
+          </Form.Item>
         </Form.Item>
 
         <Form.Item label="Tags" name="tags">

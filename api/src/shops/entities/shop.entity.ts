@@ -26,6 +26,9 @@ export class Shop {
   @Column()
   address: string;
 
+  @Column({ nullable: true })
+  image: string;
+
   @ManyToMany(() => Tag)
   @JoinTable({
     name: 'shops_tags',

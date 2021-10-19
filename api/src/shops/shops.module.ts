@@ -6,6 +6,7 @@ import { ShopsRepository } from './shops.repository';
 import { TagsRepository } from '../tags/tags.repository';
 import { AlgoliaModule } from 'nestjs-algoliasearch';
 import { Shop } from './entities/shop.entity';
+import { CloudinaryModule } from "../cloudinary/cloudinary.module";
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { Shop } from './entities/shop.entity';
         },
       },
     ]),
+    CloudinaryModule
   ],
   controllers: [ShopsController],
   providers: [ShopsService],

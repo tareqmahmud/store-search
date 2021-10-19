@@ -1,4 +1,11 @@
-import { IsArray, IsEmail, IsString, MaxLength } from 'class-validator';
+import {
+  IsArray,
+  IsEmail,
+  IsObject,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { Multer } from "multer";
 
 export class CreateShopDto {
   @IsString()
@@ -13,6 +20,9 @@ export class CreateShopDto {
 
   @IsString()
   address: string;
+
+  @IsArray()
+  image: any[]
 
   @IsArray()
   tags: string[];

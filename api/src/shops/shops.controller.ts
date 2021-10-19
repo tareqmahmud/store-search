@@ -6,11 +6,16 @@ import {
   Patch,
   Param,
   Delete,
-  NotFoundException, Query
+  NotFoundException,
+  Query,
+  UploadedFile,
+  UseInterceptors, UnprocessableEntityException
 } from "@nestjs/common";
 import { ShopsService } from './shops.service';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UNHANDLED_RUNTIME_EXCEPTION } from "@nestjs/core/errors/messages";
 
 @Controller('shops')
 export class ShopsController {
@@ -24,6 +29,12 @@ export class ShopsController {
   @Get()
   findAll(@Query() query) {
     return this.shopsService.findAll(query);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadImage(@UploadedFile() file: Express.Multer.File) {
+    return this.shopsService.uploadImage(file);
   }
 
   @Get(':id')

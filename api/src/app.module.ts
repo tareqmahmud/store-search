@@ -14,6 +14,8 @@ import { Shop } from './shops/entities/shop.entity';
 import { TagsModule } from './tags/tags.module';
 import { Tag } from './tags/entities/tag.entity';
 import { AlgoliaModule } from 'nestjs-algoliasearch';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { Cloudinary } from './cloudinary';
 
 @Module({
   imports: [
@@ -81,11 +83,13 @@ import { AlgoliaModule } from 'nestjs-algoliasearch';
     UsersModule,
     ShopsModule,
     TagsModule,
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
     { provide: APP_PIPE, useValue: new ValidationPipe({ whitelist: true }) },
+    Cloudinary,
   ],
 })
 export class AppModule {}

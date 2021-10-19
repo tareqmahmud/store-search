@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
 import { ShopsRepository } from './shops.repository';
@@ -6,17 +10,25 @@ import { TagsRepository } from '../tags/tags.repository';
 import { InjectIndex } from 'nestjs-algoliasearch';
 import { Shop } from './entities/shop.entity';
 import { SearchIndex } from 'algoliasearch';
+import { CloudinaryService } from '../cloudinary/cloudinary.service';
 
 @Injectable()
 export class ShopsService {
   constructor(
     private tagsRepository: TagsRepository,
     private shopsRepository: ShopsRepository,
+    private cloudinaryService: CloudinaryService,
     @InjectIndex(Shop)
     private readonly shopIndex: SearchIndex,
   ) {}
 
-  async create(createShopDto: CreateShopDto) {
+  async uploadImage(file: Express.Multer.File) {
+    return await this.cloudinaryService.uploadImage(file).catch(() => {
+      throw new BadRequestException('Invalid file type.');
+    });
+  }
+
+  async create(createShopDto) {
     // Fetch all the tags
     const tags = await this.tagsRepository.findWithFilters({
       tags: createShopDto.tags,
@@ -28,6 +40,7 @@ export class ShopsService {
       email: createShopDto.email,
       phone: createShopDto.phone,
       address: createShopDto.address,
+      image: createShopDto?.image[0]?.response?.secure_url as string,
       tags,
     });
 
