@@ -1,0 +1,10 @@
+{
+  "env": {
+    "REACT_APP_REST_API_URI": "Put your api endpoint here"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_REST_API_URI": "Put your api endpoint here"
+    }
+  }
+}

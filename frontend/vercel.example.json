@@ -1,0 +1,10 @@
+{
+  "env": {
+    "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/"
+    }
+  }
+}
