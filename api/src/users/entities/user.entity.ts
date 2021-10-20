@@ -36,6 +36,6 @@ export class User {
   @Column({ nullable: true })
   passwordResetExpiry: number;
 
-  @OneToMany(() => Shop, (shop) => shop.user)
-  shops: Shop[];
+  // @OneToMany(() => Shop, (shop) => shop.user)
+  // shops: Shop[];
 }

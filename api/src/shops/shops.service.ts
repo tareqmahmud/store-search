@@ -37,9 +37,9 @@ export class ShopsService {
     });
 
     // Get the current user
-    const user = await this.usersRepository.findOne({
-      username: loginUser.username,
-    });
+    // const user = await this.usersRepository.findOne({
+    //   username: loginUser.username,
+    // });
 
     // Create new shop
     const newShop = this.shopsRepository.create({
@@ -49,7 +49,7 @@ export class ShopsService {
       address: createShopDto.address,
       image: createShopDto?.image[0]?.response?.secure_url as string,
       tags,
-      user,
+      // user,
     });
 
     // Save the shop
@@ -65,11 +65,11 @@ export class ShopsService {
       { autoGenerateObjectIDIfNotExist: true },
     );
 
-    // Delete user object
-    delete newShop.user;
-
-    // Add userId
-    newShop["userId"] = user?.id;
+    // // Delete user object
+    // delete newShop.user;
+    //
+    // // Add userId
+    // newShop["userId"] = user?.id;
 
     return {
       data: newShop,

@@ -31,8 +31,8 @@ export class Shop {
   @Column({ nullable: true })
   image: string;
 
-  @ManyToOne(() => User, (user) => user.shops)
-  user: User;
+  // @ManyToOne(() => User, (user) => user.shops)
+  // user: User;
 
   @ManyToMany(() => Tag)
   @JoinTable({
