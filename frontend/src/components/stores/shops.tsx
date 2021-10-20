@@ -31,7 +31,7 @@ const Shops: React.FC<Props> = ({ search }) => {
     <>
       {!loading && isEmpty(shops) ? (
         <div className="flex justify-center items-center">
-          <Image src={noData} width="400" height="400" />
+          <Image src={noData} width="400" height="400" alt="No Shops Found" />
         </div>
       ) : (
         <div className="bg-gray-100">

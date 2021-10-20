@@ -59,7 +59,7 @@ const Login = () => {
                     href="#"
                     className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                   >
-                    Don't have account? Signup!
+                    Dont have account? Signup!
                   </a>
                 </div>
               </form>
