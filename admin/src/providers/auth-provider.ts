@@ -57,11 +57,9 @@ const authProvider: AuthProvider = {
       })
       .then((res: AxiosResponse<any>) => res.data);
 
-    console.log("Data", data);
-
     if (data) {
       const user = {
-        name: "Tareq Mahmud",
+        name: data?.username || "Tareq Mahmud",
         avatar: "https://i.pravatar.cc/150?u=refine",
       }
 
