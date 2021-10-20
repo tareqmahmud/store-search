@@ -1,7 +1,6 @@
 {
-  "name": "@store-search/admin",
+  "name": "store-search-admin",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@pankod/refine": "^1.0.76",
     "@pankod/refine-nestjsx-crud": "^0.1.8",
