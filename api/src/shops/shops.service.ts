@@ -47,6 +47,7 @@ export class ShopsService {
       email: createShopDto.email,
       phone: createShopDto.phone,
       address: createShopDto.address,
+      url: createShopDto.url,
       image: createShopDto?.image[0]?.response?.secure_url as string,
       tags,
       // user,

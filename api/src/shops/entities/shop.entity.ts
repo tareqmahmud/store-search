@@ -28,6 +28,9 @@ export class Shop {
   @Column()
   address: string;
 
+  @Column()
+  url: string;
+
   @Column({ nullable: true })
   image: string;
 

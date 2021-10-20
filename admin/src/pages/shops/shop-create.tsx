@@ -36,6 +36,10 @@ const ShopCreate: React.FC<Props> = () => {
           <Input />
         </Form.Item>
 
+        <Form.Item label="Url" name="url">
+          <Input />
+        </Form.Item>
+
         <Form.Item label="Address" name="address">
           <Input.TextArea />
         </Form.Item>
