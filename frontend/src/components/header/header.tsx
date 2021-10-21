@@ -10,7 +10,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="">
             <Link href={{ pathname: '/' }}>
-              <h2 className="text-3xl font-medium">TStore</h2>
+              <h2 className="text-3xl font-medium cursor-pointer">TStore</h2>
             </Link>
           </div>
 
