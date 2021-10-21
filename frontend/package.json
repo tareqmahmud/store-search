@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/algoliasearch": "^4.0.0",
+    "@types/js-cookie": "^3.0.0",
     "@types/lodash": "^4.14.175",
     "@types/react": "17.0.24",
     "@types/react-instantsearch-dom": "^6.12.0",
