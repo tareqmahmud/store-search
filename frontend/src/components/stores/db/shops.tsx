@@ -2,7 +2,7 @@ import React from 'react';
 import { useShopsQuery } from '@framework/rest/shops/shops.query';
 import { isEmpty } from 'lodash';
 import { TShop } from '@framework/rest/types';
-import Shop from '@components/stores/shop';
+import Shop from '@components/stores/common/shop';
 import Loader from 'react-loader-spinner';
 import noData from '@assets/noData.jpg';
 import Image from 'next/image';
@@ -13,8 +13,7 @@ type Props = {
 
 const Shops: React.FC<Props> = ({ search }) => {
   const { data, isLoading: loading } = useShopsQuery({
-    search: search,
-    enableAlgolia: true
+    search: search
   });
 
   if (loading) {

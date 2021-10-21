@@ -4,7 +4,6 @@ type NumberOrString = number | string;
 
 export type ParamsType = {
   search?: string;
-  enableAlgolia?: boolean;
 };
 
 export class CoreApi {
@@ -13,8 +12,7 @@ export class CoreApi {
   constructor(public _basePath: string) {}
 
   find(params: ParamsType) {
-    let enableAlgolia = params?.enableAlgolia ?? false;
-    const queryString = `?search=${params?.search}&enableAlgolia=${enableAlgolia}`;
+    const queryString = `?search=${params?.search}`;
     return this.request.get(this._basePath + queryString);
   }
 

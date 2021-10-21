@@ -1,10 +1,14 @@
 {
   "env": {
-    "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/"
+    "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/",
+    "NEXT_PUBLIC_ALGOLIA_ID": "",
+    "NEXT_PUBLIC_ALGOLIA_API_KEY": ""
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/"
+      "NEXT_PUBLIC_REST_API_ENDPOINT": "https://store-search-algolia.herokuapp.com/",
+      "NEXT_PUBLIC_ALGOLIA_ID": "",
+      "NEXT_PUBLIC_ALGOLIA_API_KEY": ""
     }
   }
 }

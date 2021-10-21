@@ -9,7 +9,9 @@ const Header: React.FC = () => {
         <div className="px-12 py-3 flex justify-between items-center">
           {/* Logo */}
           <div className="">
-            <Link href={{ pathname: '/' }}>TStore</Link>
+            <Link href={{ pathname: '/' }}>
+              <h2 className="text-3xl font-medium">TStore</h2>
+            </Link>
           </div>
 
           {/* Navigation */}

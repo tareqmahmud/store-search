@@ -9,17 +9,14 @@ const Navigation: React.FC<Props> = () => {
     <div className="">
       <nav className="space-x-4">
         <Link href="/">
-          <a className="hover:text-purple-500">Home</a>
+          <a className="hover:text-purple-500">DB Search</a>
         </Link>
-        <Link href="/">
-          <a className="hover:text-purple-500">About</a>
+        <Link href={ROUTES.ALGOLIA_SEARCH}>
+          <a className="hover:text-purple-500">Algolia Search</a>
         </Link>
         <Link href={ROUTES.LOGIN}>
-          <a className="hover:text-purple-500">Login</a>
-        </Link>
-        <Link href={ROUTES.REGISTER}>
           <a className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600">
-            Register
+            Login
           </a>
         </Link>
       </nav>

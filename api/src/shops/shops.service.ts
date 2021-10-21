@@ -81,15 +81,13 @@ export class ShopsService {
     let shops = [];
 
     if (
-      query?.enableAlgolia !== 'true' &&
-      (query?.search === '' || query?.search === 'undefined' || !query?.search)
+      query?.search === '' ||
+      query?.search === 'undefined' ||
+      !query?.search
     ) {
       shops = await this.shopsRepository.find({
         relations: ['tags'],
       });
-    } else if (query?.enableAlgolia === 'true') {
-      let search = query?.search === 'undefined' ? '' : query?.search;
-      return this.shopIndex.search(search);
     } else {
       shops = await this.shopsRepository.findWithSearch(query?.search);
     }

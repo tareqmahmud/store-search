@@ -16,3 +16,7 @@
 .top-50-percent {
     top: 50%;
 }
+
+.grid-column-center {
+    grid-column: 2/4;
+}
