@@ -11,8 +11,11 @@ import TagList from "./pages/tags/tag-list";
 import TagCreate from "./pages/tags/tag-create";
 import TagEdit from "./pages/tags/tag-edit";
 import TagShow from "./pages/tags/tag-show";
+import axios from "axios";
 
 function App() {
+  axios.defaults.timeout = 3000;
+
   return (
     <Refine
       dataProvider={dataProvider()}
