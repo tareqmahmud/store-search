@@ -13,7 +13,7 @@ const Shop: React.FC<Props> = ({ shop }) => {
 
   return (
     <div className="bg-white pb-5 rounded shadow">
-      <a href="#">
+      <a href={shop?.url ?? '#'} target="_blank" rel="noreferrer">
         <Image
           src={image}
           alt="Card Image"
