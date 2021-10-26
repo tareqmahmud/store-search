@@ -60,7 +60,7 @@ const authProvider: AuthProvider = {
     if (data) {
       const user = {
         name: data?.username || "Tareq Mahmud",
-        avatar: "https://i.pravatar.cc/150?u=refine",
+        avatar: "/assets/images/profile.png",
       }
 
       return Promise.resolve(user);
